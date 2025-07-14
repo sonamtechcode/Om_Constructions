@@ -1,0 +1,123 @@
+:root {
+  --primary-color: #ea580c;
+  --secondary-color: #dc2626;
+  --dark-color: #1e293b;
+  --light-color: #f8fafc;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  padding-top: 76px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.hero-section {
+  background: linear-gradient(rgba(234, 88, 12, 0.8), rgba(220, 38, 38, 0.8)),
+    url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&h=800&fit=crop") center / cover;
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.section-padding {
+  padding: 80px 0;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.stats-section {
+  background-color: var(--light-color);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.footer {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 50px 0 20px;
+}
+
+.footer a {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--primary-color);
+}
+
+.icon-box {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(234, 88, 12, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.project-img {
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.navbar {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0;
+  }
+
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  .section-padding {
+    padding: 60px 0;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+}
