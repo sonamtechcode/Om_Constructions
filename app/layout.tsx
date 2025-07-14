@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "OmConscructions - Building Your Dreams into Reality",
   description:
-    "Professional construction services across India. Specializing in residential, commercial, and industrial projects with over 15 years of experience.",
-  keywords: "construction, building, residential, commercial, industrial, India, contractors",
+    "Professional construction company with over 15 years of experience in residential, commercial, and industrial projects across India.",
+  keywords: "construction, building, residential, commercial, industrial, India, OmConscructions",
     generator: 'v0.dev'
 }
 

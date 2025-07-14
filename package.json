@@ -1,11 +1,14 @@
 {
-  "name": "my-v0-project",
+  "name": "omconscructions-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "build": "next build",
+    "check-build": "ls -la out/ || echo 'No build output found. Run npm run build first.'",
     "dev": "next dev",
+    "export": "next build",
     "lint": "next lint",
+    "locate-files": "bash scripts/locate-files.sh",
     "start": "next start"
   },
   "dependencies": {

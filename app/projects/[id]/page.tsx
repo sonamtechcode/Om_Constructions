@@ -1,282 +1,329 @@
+import { notFound } from "next/navigation"
+import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, MapPin, Calendar, Building, User } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
 
-// Mock data for projects
+// Project data with proper typing
 const projectsData = {
-  1: {
+  "1": {
+    id: "1",
     title: "Skyline Heights",
-    subtitle: "Luxury Apartments",
-    location: "Mumbai, India",
     type: "Residential",
+    category: "Luxury Apartments",
+    location: "Mumbai, India",
     completionYear: "2023",
     client: "ABC Developers Pvt. Ltd.",
-    scope: "Civil, Electrical, Finishing",
+    status: "Completed",
     description:
-      "Skyline Heights is a modern 20-story apartment complex that redefines luxury living in Mumbai. The project focused on luxury design, structural strength, and sustainable green spaces. We delivered the entire project within 14 months, incorporating state-of-the-art amenities and eco-friendly features.",
+      "Skyline Heights is a modern 20-story luxury apartment complex featuring contemporary design, premium amenities, and sustainable green spaces. The project focused on creating a perfect blend of comfort and elegance for urban living.",
+    scope: ["Civil Construction", "Electrical Work", "Interior Finishing", "Landscaping"],
     images: [
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1515263487990-61b07816b924?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=500&fit=crop",
-    ],
-    features: [
-      "20-story luxury apartment complex",
-      "120 premium residential units",
-      "Rooftop garden and recreational area",
-      "Underground parking for 150 vehicles",
-      "24/7 security and concierge services",
-      "Swimming pool and fitness center",
-      "Sustainable green building features",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
     ],
     specifications: {
-      "Total Area": "2.5 Million sq ft",
-      "Number of Units": "120 Apartments",
-      Floors: "20 Floors + Basement",
-      Parking: "150 Car Spaces",
-      Amenities: "Pool, Gym, Garden, Security",
+      "Total Area": "2.5 acres",
+      "Total Units": "120 apartments",
+      Floors: "20 floors",
+      Parking: "150 car spaces",
+      Amenities: "Swimming pool, Gym, Garden",
     },
   },
-  2: {
+  "2": {
+    id: "2",
     title: "Greenview Villas",
-    subtitle: "Residential Complex",
-    location: "Pune, India",
     type: "Residential",
-    completionYear: "2023",
+    category: "Villa Complex",
+    location: "Pune, India",
+    completionYear: "2022",
     client: "Green Living Developers",
-    scope: "Complete Construction, Landscaping",
+    status: "Completed",
     description:
-      "Greenview Villas is an exclusive residential complex featuring 50 independent villas designed for modern families. Each villa combines contemporary architecture with traditional Indian elements, set within beautifully landscaped gardens.",
+      "Greenview Villas is an exclusive residential complex featuring 25 independent villas with modern architecture and eco-friendly design. Each villa is designed with spacious layouts and premium finishes.",
+    scope: ["Civil Construction", "Electrical Work", "Plumbing", "Landscaping", "Interior Design"],
     images: [
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=500&fit=crop",
-    ],
-    features: [
-      "50 independent luxury villas",
-      "3 & 4 BHK configurations",
-      "Private gardens for each villa",
-      "Community clubhouse",
-      "Children's play area",
-      "Jogging track and outdoor gym",
-      "24/7 gated community security",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop",
     ],
     specifications: {
-      "Total Villas": "50 Units",
-      "Villa Types": "3 BHK & 4 BHK",
-      "Plot Size": "2000-3000 sq ft",
-      "Built-up Area": "1800-2500 sq ft",
-      Amenities: "Clubhouse, Security, Gardens",
+      "Total Area": "5 acres",
+      "Total Villas": "25 independent villas",
+      "Villa Size": "2500-3500 sq ft",
+      Bedrooms: "3-4 BHK",
+      "Special Features": "Private gardens, Solar panels",
     },
   },
-  3: {
+  "3": {
+    id: "3",
     title: "Tech Park Offices",
-    subtitle: "Commercial Building",
-    location: "Bangalore, India",
     type: "Commercial",
-    completionYear: "2022",
+    category: "Office Building",
+    location: "Bangalore, India",
+    completionYear: "2023",
     client: "TechCorp Solutions",
-    scope: "Civil, MEP, Interior Fit-out",
+    status: "Completed",
     description:
-      "Tech Park Offices is a state-of-the-art commercial building designed to meet the needs of modern technology companies. The building features flexible office spaces, advanced IT infrastructure, and sustainable design elements.",
+      "A state-of-the-art commercial office building designed for modern businesses. Features include smart building technology, energy-efficient systems, and flexible workspace solutions.",
+    scope: ["Civil Construction", "MEP Services", "IT Infrastructure", "Interior Fit-out"],
     images: [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&h=500&fit=crop",
-    ],
-    features: [
-      "15-floor modern office building",
-      "Flexible office space configurations",
-      "Advanced IT and telecom infrastructure",
-      "Energy-efficient HVAC systems",
-      "Multi-level parking facility",
-      "Food court and recreational areas",
-      "LEED Gold certified building",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&h=600&fit=crop",
     ],
     specifications: {
-      "Total Area": "1.8 Million sq ft",
-      Floors: "15 Floors + Basement",
-      "Office Capacity": "2000+ Employees",
-      Parking: "400 Car Spaces",
-      Certification: "LEED Gold",
+      "Total Area": "1.2 million sq ft",
+      Floors: "15 floors",
+      Capacity: "5000 employees",
+      Parking: "800 car spaces",
+      Certification: "LEED Gold certified",
+    },
+  },
+  "4": {
+    id: "4",
+    title: "Industrial Hub",
+    type: "Industrial",
+    category: "Manufacturing Facility",
+    location: "Chennai, India",
+    completionYear: "2022",
+    client: "Manufacturing Corp Ltd.",
+    status: "Completed",
+    description:
+      "A comprehensive industrial manufacturing facility with modern production lines, warehouse spaces, and administrative offices. Built to international standards with focus on safety and efficiency.",
+    scope: ["Civil Construction", "Structural Steel", "MEP Services", "Fire Safety Systems"],
+    images: [
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
+    ],
+    specifications: {
+      "Total Area": "10 acres",
+      "Built-up Area": "500,000 sq ft",
+      "Production Lines": "8 automated lines",
+      Warehouse: "200,000 sq ft",
+      "Power Capacity": "5 MW",
+    },
+  },
+  "skyline-heights": {
+    id: "skyline-heights",
+    title: "Skyline Heights",
+    type: "Residential",
+    category: "Luxury Apartments",
+    location: "Mumbai, India",
+    completionYear: "2023",
+    client: "ABC Developers Pvt. Ltd.",
+    status: "Completed",
+    description:
+      "Skyline Heights is a modern 20-story luxury apartment complex featuring contemporary design, premium amenities, and sustainable green spaces. The project focused on creating a perfect blend of comfort and elegance for urban living.",
+    scope: ["Civil Construction", "Electrical Work", "Interior Finishing", "Landscaping"],
+    images: [
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+    ],
+    specifications: {
+      "Total Area": "2.5 acres",
+      "Total Units": "120 apartments",
+      Floors: "20 floors",
+      Parking: "150 car spaces",
+      Amenities: "Swimming pool, Gym, Garden",
     },
   },
 }
 
+const relatedProjects = [
+  {
+    id: "2",
+    title: "Greenview Villas",
+    type: "Residential",
+    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop",
+    location: "Pune, India",
+  },
+  {
+    id: "3",
+    title: "Tech Park Offices",
+    type: "Commercial",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
+    location: "Bangalore, India",
+  },
+]
+
 export default function ProjectDetailPage({ params }: { params: { id: string } }) {
-  const projectId = Number.parseInt(params.id)
-  const project = projectsData[projectId as keyof typeof projectsData]
+  const project = projectsData[params.id as keyof typeof projectsData]
 
   if (!project) {
     notFound()
   }
 
   return (
-    <div className="min-h-screen py-8">
-      <div className="container mx-auto px-4">
-        {/* Back Button */}
-        <div className="mb-8">
-          <Button asChild variant="ghost" className="mb-4">
-            <Link href="/portfolio">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Portfolio
-            </Link>
-          </Button>
-        </div>
-
-        {/* Project Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <Badge className="bg-orange-100 text-orange-800">{project.type}</Badge>
-            <Badge variant="outline">{project.completionYear}</Badge>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <section className="bg-slate-50 py-8">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-4 mb-6">
+            <Button asChild variant="outline" size="sm">
+              <Link href="/portfolio">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Portfolio
+              </Link>
+            </Button>
+            <Badge variant={project.status === "Completed" ? "default" : "secondary"}>{project.status}</Badge>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{project.title}</h1>
-          <p className="text-xl text-muted-foreground mb-6">{project.subtitle}</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-orange-600" />
-              <span>{project.location}</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
+              <div className="flex flex-wrap gap-4 text-muted-foreground mb-4">
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  {project.location}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4" />
+                  {project.completionYear}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Building className="h-4 w-4" />
+                  {project.type}
+                </div>
+                <div className="flex items-center gap-2">
+                  <User className="h-4 w-4" />
+                  {project.client}
+                </div>
+              </div>
+              <p className="text-lg text-muted-foreground">{project.description}</p>
             </div>
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4 text-orange-600" />
-              <span>Completed {project.completionYear}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Building className="h-4 w-4 text-orange-600" />
-              <span>{project.scope}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <User className="h-4 w-4 text-orange-600" />
-              <span>{project.client}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Image Gallery */}
-        <div className="mb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div className="lg:col-span-2">
+            <div className="relative">
               <Image
                 src={project.images[0] || "/placeholder.svg"}
-                alt={`${project.title} main image`}
-                width={800}
-                height={500}
-                className="w-full h-96 object-cover rounded-lg"
+                alt={project.title}
+                width={600}
+                height={400}
+                className="w-full h-80 object-cover rounded-lg shadow-lg"
               />
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
-              {project.images.slice(1, 3).map((image, index) => (
-                <Image
-                  key={index}
-                  src={image || "/placeholder.svg"}
-                  alt={`${project.title} image ${index + 2}`}
-                  width={400}
-                  height={240}
-                  className="w-full h-44 object-cover rounded-lg"
-                />
-              ))}
-            </div>
           </div>
-
-          {project.images.length > 3 && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-              {project.images.slice(3).map((image, index) => (
-                <Image
-                  key={index}
-                  src={image || "/placeholder.svg"}
-                  alt={`${project.title} image ${index + 4}`}
-                  width={300}
-                  height={200}
-                  className="w-full h-32 object-cover rounded-lg"
-                />
-              ))}
-            </div>
-          )}
         </div>
+      </section>
 
-        {/* Project Details */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold mb-4">Project Description</h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">{project.description}</p>
-
-            <h3 className="text-xl font-bold mb-4">Key Features</h3>
-            <ul className="space-y-2 mb-8">
-              {project.features.map((feature, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
+      {/* Image Gallery */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8">Project Gallery</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {project.images.map((image, index) => (
+              <div key={index} className="relative group cursor-pointer">
+                <Image
+                  src={image || "/placeholder.svg"}
+                  alt={`${project.title} - Image ${index + 1}`}
+                  width={400}
+                  height={300}
+                  className="w-full h-64 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div>
+      {/* Project Details */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Scope of Work */}
             <Card>
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-4">Project Specifications</h3>
+                <h3 className="text-2xl font-bold mb-4">Scope of Work</h3>
+                <ul className="space-y-2">
+                  {project.scope.map((item, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-orange-600 rounded-full"></div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Project Specifications */}
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-bold mb-4">Project Specifications</h3>
                 <div className="space-y-3">
                   {Object.entries(project.specifications).map(([key, value]) => (
-                    <div
-                      key={key}
-                      className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
-                    >
-                      <span className="font-medium text-sm">{key}:</span>
-                      <span className="text-sm text-muted-foreground">{value}</span>
+                    <div key={key} className="flex justify-between items-center border-b border-gray-200 pb-2">
+                      <span className="font-medium">{key}:</span>
+                      <span className="text-muted-foreground">{value}</span>
                     </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
-
-            <div className="mt-6">
-              <Button asChild className="w-full bg-orange-600 hover:bg-orange-700">
-                <Link href="/contact">Start Your Project</Link>
-              </Button>
-            </div>
           </div>
         </div>
+      </section>
 
-        {/* Related Projects */}
-        <section className="mt-20">
+      {/* Related Projects */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">Related Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {Object.entries(projectsData)
-              .filter(([id]) => Number.parseInt(id) !== projectId)
-              .slice(0, 3)
-              .map(([id, relatedProject]) => (
-                <Card key={id} className="group cursor-pointer hover:shadow-lg transition-shadow">
-                  <Link href={`/projects/${id}`}>
-                    <CardContent className="p-0">
-                      <div className="relative overflow-hidden rounded-t-lg">
-                        <Image
-                          src={relatedProject.images[0] || "/placeholder.svg"}
-                          alt={relatedProject.title}
-                          width={400}
-                          height={250}
-                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <h3 className="font-semibold text-lg mb-1">{relatedProject.title}</h3>
-                        <p className="text-sm text-muted-foreground mb-2">{relatedProject.subtitle}</p>
-                        <p className="text-sm text-orange-600">{relatedProject.location}</p>
-                      </div>
-                    </CardContent>
-                  </Link>
-                </Card>
-              ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {relatedProjects.map((relatedProject) => (
+              <Card key={relatedProject.id} className="group cursor-pointer hover:shadow-lg transition-shadow">
+                <Link href={`/projects/${relatedProject.id}`}>
+                  <CardContent className="p-0">
+                    <div className="relative overflow-hidden rounded-t-lg">
+                      <Image
+                        src={relatedProject.image || "/placeholder.svg"}
+                        alt={relatedProject.title}
+                        width={400}
+                        height={250}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-semibold text-lg mb-1">{relatedProject.title}</h3>
+                      <p className="text-sm text-muted-foreground mb-2">{relatedProject.type}</p>
+                      <p className="text-sm text-orange-600">{relatedProject.location}</p>
+                    </div>
+                  </CardContent>
+                </Link>
+              </Card>
+            ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 bg-orange-600 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Interested in a Similar Project?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Let's discuss how we can bring your construction vision to life with the same quality and expertise.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" variant="secondary">
+              <Link href="/contact">Get Free Consultation</Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-white text-white hover:bg-white hover:text-orange-600 bg-transparent"
+            >
+              <Link href="/portfolio">View All Projects</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
